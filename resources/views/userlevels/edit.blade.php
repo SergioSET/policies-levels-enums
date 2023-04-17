@@ -31,7 +31,7 @@
                                     class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                 @foreach(UserLevel::cases() as $levelOption)
                                     <option value="{{$levelOption}}" @if ($levelOption == $user->level) selected="selected" @endif>
-                                        {{$levelOption->name}}
+                                        {{$levelOption->label()}}
                                     </option>
                                 @endforeach
                             </select>

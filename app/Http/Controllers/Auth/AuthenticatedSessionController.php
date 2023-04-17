@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -32,7 +33,21 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $usuario = DB::table('users')->where("email", $request->email)->first();
+        
+        switch ($usuario->level) {
+            case 1:
+                $HOME = '/dashboardContribuidor';
+                break;
+            case 2:
+                $HOME = '/dashboardAdmin';
+                break;
+            default:
+                $HOME = '/dashboard';
+                break;
+        }
+        return redirect()->intended($HOME);
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

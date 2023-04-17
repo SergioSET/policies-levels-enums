@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-
 class RegisteredUserController extends Controller
 {
     /**
@@ -49,6 +48,17 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        switch ($user->level) {
+            case 1:
+                $HOME = '/dashboardContribuidor';
+                break;
+            case 2:
+                $HOME = '/dashboardAdmin';
+                break;
+            default:
+                $HOME = '/dashboard';
+                break;
+        }
+        return redirect($HOME);
     }
 }

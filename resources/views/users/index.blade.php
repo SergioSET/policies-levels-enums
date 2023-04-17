@@ -32,7 +32,7 @@
                                    'text-sky-700 bg-sky-100' => UserLevel::Contributor === $user->level,
                                    'text-teal-700 bg-teal-100' => UserLevel::Administrator === $user->level,
                                    ])>
-                             {{__($user->level->name)}}
+                             {{__($user->level->label())}}
                            </span>
                             </td>
                             <td class="p-4">
