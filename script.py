@@ -1,5 +1,6 @@
 from os import system
 print("Este script ejecutará los comandos necesarios para iniciar el proyecto")
+system("cp .env.example .env")
 system("npm install")
 system("npm update")
 system("composer install")
