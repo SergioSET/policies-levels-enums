@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('users.index')->with('users', User::getAllUsers());
+
+        $rol = $request->get('buscarpor');
+
+        $Usuarios = User::where('level','like',"%$rol%")->paginate();
+
+        return view('users.index')->with('users', $Usuarios);
     }
 
     public function destroy(User $user)
