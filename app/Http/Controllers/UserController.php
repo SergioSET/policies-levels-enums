@@ -16,6 +16,14 @@ class UserController extends Controller
 
         return view('users.index')->with('users', $Usuarios);
     }
+    
+    public function dataTable(Request $request)
+    {
+
+        $Usuarios = User::all();
+        
+        return view('users.dataTable')->with('users', $Usuarios);
+    }
 
     public function destroy(User $user)
     {

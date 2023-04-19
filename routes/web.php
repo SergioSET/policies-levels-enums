@@ -42,6 +42,10 @@ Route::get('/users', [UserController::class, 'index'])
     ->middleware(['auth'])
     ->name('users.index');
 
+Route::get('/dataTable', [UserController::class, 'dataTable'])
+    ->middleware(['auth'])
+    ->name('users.dataTable');
+
 Route::get('/users/{user}/edit', [UserLevelController::class, 'edit'])
     ->middleware(['auth'])
     ->name('userlevels.edit');

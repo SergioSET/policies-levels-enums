@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Users') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('users.dataTable')" :active="request()->routeIs('users.dataTable')">
+                        {{ __('Datatables') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -75,6 +78,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                 {{ __('Users') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('users.dataTable')" :active="request()->routeIs('users.dataTable')">
+                {{ __('Datatable') }}
             </x-responsive-nav-link>
         </div>
 
