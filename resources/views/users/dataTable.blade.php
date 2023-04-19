@@ -21,6 +21,7 @@
                             <th>Nombre</th>
                             <th>Correo electronico</th>
                             <th>Rol</th>
+                            <th>Editar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,9 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->level->label() }}</td>
+                                <td>
+                                    <a href="{{ route('userlevels.edit', $user->id) }}"
+                                        class="btn btn-primary">Editar</a>
                             </tr>
                         @endforeach
                     </tbody>

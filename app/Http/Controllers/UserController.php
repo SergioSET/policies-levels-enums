@@ -12,17 +12,28 @@ class UserController extends Controller
 
         $rol = $request->get('buscarpor');
 
-        $Usuarios = User::where('level','like',"%$rol%")->paginate();
+        $Usuarios = User::where('level', 'like', "%$rol%")->paginate();
 
         return view('users.index')->with('users', $Usuarios);
     }
-    
+
     public function dataTable(Request $request)
     {
 
         $Usuarios = User::all();
-        
+
         return view('users.dataTable')->with('users', $Usuarios);
+    }
+
+    public function edit(User $user)
+    {
+        return view('users.userEdit', compact('user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $user->update($request->all());
+        return redirect()->route('users.index');
     }
 
     public function destroy(User $user)
