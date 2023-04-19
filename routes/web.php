@@ -38,20 +38,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/users', [UserController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('users.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/userstable', [UserController::class, 'indexTable'])->name('users.indexTable');
+    Route::get('/users/{user}/edit', [UserLevelController::class, 'edit'])->name('userlevels.edit');
+    Route::put('/users/{user}', [UserLevelController::class, 'update'])->name('userlevels.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+});
 
-Route::get('/users/{user}/edit', [UserLevelController::class, 'edit'])
-    ->middleware(['auth'])
-    ->name('userlevels.edit');
-
-Route::put('/users/{user}', [UserLevelController::class, 'update'])
-    ->middleware(['auth'])
-    ->name('userlevels.update');
-
-Route::delete('/users/{user}', [UserController::class, 'destroy'])
-    ->middleware(['auth'])
-    ->name('users.destroy');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

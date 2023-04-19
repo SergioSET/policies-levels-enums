@@ -8,15 +8,18 @@ enum UserLevel: int
     case Contributor = 1;
     case Administrator = 2;
 
-    public function label(): string {
+    public function label(): string
+    {
         return static::getLabel($this);
     }
 
-    public static function getLabel(self $value): string {
+    public static function getLabel(self $value): string
+    {
         return match ($value) {
             UserLevel::Member => 'Miembro',
             UserLevel::Contributor => 'Contribuidor',
             UserLevel::Administrator => 'Administrador',
         };
     }
+
 }
