@@ -29,7 +29,7 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->level }}</td>
+                                <td>{{ $user->level->label() }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -44,6 +44,8 @@
 
     <script>
         let table = new DataTable('#usuarios');
+
+        
     </script>
 
 </x-app-layout>
